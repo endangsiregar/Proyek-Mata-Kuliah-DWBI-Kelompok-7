@@ -1,0 +1,50 @@
+<Schema name="Schema">
+  <Dimension type="StandardDimension" visible="true" name="Date">
+    <Hierarchy name="Date" visible="true" hasAll="true" allMemberName="Semua Waktu" primaryKey="ID_Date">
+      <Table name="Dim_date" schema="dbo" alias="">
+      </Table>
+      <Level name="Date" visible="true" table="Dim_date" column="Dim_date" nameColumn="ID_Date" ordinalColumn="Dim_date" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" name="Location">
+    <Hierarchy name="Dim_Location" visible="true" hasAll="true" allMemberName="Semua Lokasi" primaryKey="Id_Location">
+      <Table name="Dim_Location" schema="dbo" alias="">
+      </Table>
+      <Level name="Location" visible="true" table="Dim_Location" column="dim_location" nameColumn="Id_Location" ordinalColumn="dim_location" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" name="Project">
+    <Hierarchy name="Dim_Project" visible="true" hasAll="true" allMemberName="Semua Proyek">
+      <Table name="Dim_Project" schema="dbo" alias="">
+      </Table>
+      <Level name="Project" visible="true" table="Dim_Project" column="dim_project" nameColumn="Id_Project" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" name="State">
+    <Hierarchy name="Dim_State" visible="true" hasAll="true" allMemberName="Semua State">
+      <Table name="Dim_State" schema="dbo" alias="">
+      </Table>
+      <Level name="State" visible="true" table="Dim_State" column="dim_state" nameColumn="Id_State" ordinalColumn="dim_state" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Cube name="Kickstarter7" visible="true" cache="true" enabled="true">
+    <Table name="Fact_Project_Campaign" schema="dbo" alias="">
+    </Table>
+    <Dimension type="TimeDimension" visible="true" name="Date">
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" name="State">
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" name="Location">
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" name="Project">
+    </Dimension>
+    <Measure name="Total Backers" column="BackersCount" formatString="#.###" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="Total_Project" column="ProjectGoal" formatString="#.###" aggregator="sum" visible="true">
+    </Measure>
+  </Cube>
+</Schema>
